@@ -21,7 +21,8 @@ EXTENSIONS = [
   "flask_project_builder.ext.migrate:init_app",
   "flask_project_builder.ext.auth:init_app",
   "flask_project_builder.ext.admin:init_app",
-  "flask_project_builder.ext.cli:init_app", # "flask_project_builder.ext.toolbar:init_app",
+  "flask_project_builder.ext.cli:init_app", 
+  "flask_project_builder.ext.toolbar:init_app",
   "flask_project_builder.ext.site:init_app",
   "flask_project_builder.ext.hooks:init_app",
 ]

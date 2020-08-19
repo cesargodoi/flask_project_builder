@@ -1,24 +1,83 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello flask_project_builder!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-</head>
-
-<body>
-    <section class="section">
+{% block content %}
+<section class="hero is-dark">
+    <div class="hero-body">
         <div class="container">
             <h1 class="title">
-                Hello flask_project_builder!
+                Flask Project Builder
             </h1>
-            <p class="subtitle">
-                This page was made with <strong>flask_start</strong>!
-            </p>
+            <h2 class="subtitle">
+                super simple!
+            </h2>
         </div>
-    </section>
-</body>
+    </div>
+</section>
 
-</html>
+<section class="section">
+    <div class="columns">
+        <div class="column is-one-third">
+            <form action="">
+                <div class="field">
+                    <label class="label">Project Name</label>
+                    <div class="control">
+                        <input class="input" type="text" name="project_name" placeholder="project_name">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox" name="afp">
+                            Application Factory Pattern
+                        </label>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox" name="sqlal">
+                            SQLAlchemy
+                        </label>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <label class="checkbox">
+                            <input type="checkbox" name="dyna">
+                            Dynaconf
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-link">Create</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="column">
+            <header class="bd-header">
+                <div class="bd-header-titles">
+                    <h1 class="title">
+                        Container
+                    </h1>
+                    <p class="subtitle is-4">
+
+                        A simple <strong>container</strong> to center your content horizontally
+
+                    </p>
+
+                </div>
+
+            </header>
+        </div>
+        <!-- <div class="column">Auto</div> -->
+    </div>
+</section>
+
+{% endblock content %}
