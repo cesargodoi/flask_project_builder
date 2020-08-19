@@ -17,67 +17,175 @@
 <section class="section">
     <div class="columns">
         <div class="column is-one-third">
-            <form action="{{ url_for('site.index') }}" method="POST">
-                <div class="field">
-                    <label class="label">Project Name</label>
-                    <div class="control">
-                        <input class="input" type="text" name="project_name" placeholder="project_name">
+            <article class="tile is-child notification is-light">
+                <form action="">
+                    <div class="field">
+                        <label class="label">Project Name</label>
+                        <div class="control">
+                            <input class="input" type="text" name="project_name" placeholder="project_name">
+                        </div>
                     </div>
-                </div>
 
-                <div class="field">
-                    <div class="control">
-                        <label class="checkbox">
-                            <input type="checkbox" name="afp">
-                            Application Factory Pattern
-                        </label>
+                    <div class="field">
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="checkbox" name="afp">
+                                Application Factory Pattern
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="field">
-                    <div class="control">
-                        <label class="checkbox">
-                            <input type="checkbox" name="sqlal">
-                            SQLAlchemy
-                        </label>
+                    <div class="field">
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="checkbox" name="sqlal">
+                                SQLAlchemy
+                            </label>
+                        </div>
                     </div>
-                </div>
 
-                <div class="field">
-                    <div class="control">
-                        <label class="checkbox">
-                            <input type="checkbox" name="dyna">
-                            Dynaconf
-                        </label>
+                    <div class="field">
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="checkbox" name="dyna">
+                                Dynaconf
+                            </label>
+                        </div>
                     </div>
-                </div>
 
 
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-link">Create</button>
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-link">Create</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </article>
+
+
+
         </div>
         <div class="column">
             <header class="bd-header">
                 <div class="bd-header-titles">
                     <h1 class="title">
-                        Container
+                        HOW TO USE
                     </h1>
-                    <p class="subtitle is-4">
-
-                        A simple <strong>container</strong> to center your content horizontally
-
-                    </p>
-
+                    <p class="subtitle is-4"></p>
                 </div>
-
             </header>
+
+
+            <h2 class="subtitle">
+                fill in the form on the side and choose options:
+            </h2>
+            <br>
+            <h2 class="subtitle">
+                Project Name
+            </h2>
+            <h3>
+                Do not use spaces in your project name. Prefer underscores instead spaces.
+            </h3>
+            <br>
+            <h2 class="subtitle">
+                Application Factory Pattern
+            </h2>
+            <h3>
+                Indicates that you want to create a new Flask project on Application Factory Pattern. <br>
+                As your Flask application grows, you'll often find the need to register blueprints, dynamically load
+                configuration, add request handlers etc.. <br>
+                The application factory is a function that wraps the creating of the app object and returns it.
+            </h3>
+            <br>
+            <h2 class="subtitle">
+                SQLAlchemy
+            </h2>
+            <h3>
+                Indicates that you want to install [Flask
+                SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) in your project.
+            </h3>
+            <br>
+            <h2 class="subtitle">
+                Dynaconf
+            </h2>
+            <h3>
+                Indicates that you want to install [Dynaconf](https://dynaconf.readthedocs.io/en/docs_223/) in your
+                project.
+            </h3>
+
+            <br>
+            <header class="bd-header">
+                <div class="bd-header-titles">
+                    <h1 class="title">
+                        WHAT TO DO BEFORE START
+                    </h1>
+                    <p class="subtitle is-4"></p>
+                </div>
+            </header>
+
+            <ul>
+                <li> If you chose the Application Factory Pattern, don't forget to update the FLASK_APP environment
+                    variable:</li>
+                <blockquote><code>$ export FLASK_APP=project_name/app.py</code></blockquote>
+            </ul>
+            <br>
+            <ul>
+                <li>If you want to run flask in development mode, update the FLASK_ENV environment variable:</li>
+                <blockquote><code>$ export FLASK_ENV=development</code></blockquote>
+            </ul>
+            <br>
+            <ul>
+                <li>if you are using the Application Factory Pattern and want to use the `flask-toolbar`, run the
+                    command:</li>
+                <blockquote><code>$ pip install flask-toolbar</code></blockquote>
+                and uncomment the line:
+                <li># toolbar.init_app(app) at app.py file or</li>
+                <li># project_name.ext.toolbar:init_app in settings.toml (when you are using Dynaconf)</li>
+            </ul>
+            <br>
+            In the Makefile file, we have some useful commands, which we use with the make command, such as:
+            <br>
+            <br>
+
+
+            <table style="width:90%" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <tr>
+                    <th>Command</th>
+                    <th>What he does</th>
+                </tr>
+                <tr>
+                    <td>make clean</td>
+                    <td>clears the project folder</td>
+                </tr>
+                <tr>
+                    <td>make install</td>
+                    <td>install our project as a package python</td>
+                </tr>
+                <tr>
+                    <td>make install-dev</td>
+                    <td>similar to install, but with requirements-dev.txt</td>
+                </tr>
+                <tr>
+                    <td>make test</td>
+                    <td>run tests</td>
+                </tr>
+                <tr>
+                    <td>make init-db</td>
+                    <td>starts and updates the db (if you choose SQLAlchemy)</td>
+                </tr>
+                <tr>
+                    <td>make format</td>
+                    <td>formats the files (needs: isort and black)</td>
+                </tr>
+            </table>
+
+
         </div>
         <!-- <div class="column">Auto</div> -->
     </div>
+    <br><br>
+    This python script was created by Cesar and Jady Godoi during [Curso de Desenvolvimento
+    Web](http://skip.gg/curso-flask-codeshow) taught by Bruno Rocha.
 </section>
 
 <script type="text/javascript">
