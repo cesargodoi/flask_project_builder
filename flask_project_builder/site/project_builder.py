@@ -1,6 +1,8 @@
 import os
-import tarfile
 
+from tarfile import TarFile
+from os.path import basename
+from zipfile import ZipFile
 from base64 import b16encode
 from jinja2 import Environment, FileSystemLoader
 
@@ -127,6 +129,17 @@ class ProjectBuilder:
                 self.render_template(f"{self.proj}/ext/auth/admin.py")
 
     def make_tarfile(self):
-        with tarfile.open(f"{self.proj}.tar.gz", "w:gz") as tar:
-            tar.add(self.proj)
+        with TarFile.open(f"{self.proj}.tar.gz", "w:gz") as tar_file:
+            tar_file.add(self.proj)
+        os.system(f"rm -rf {self.proj}")
+
+    def make_zipfile(self):
+        file_paths = []
+        for root, directories, files in os.walk(self.proj):
+            for filename in files:
+                file_path = os.path.join(root, filename)
+                file_paths.append(file_path)
+        with ZipFile(f"{self.proj}.zip", "w") as zip_file:
+            for file_ in file_paths:
+                zip_file.write(file_)
         os.system(f"rm -rf {self.proj}")

@@ -1,34 +1,8 @@
 [default]
-DEBUG = false 
+DEBUG = false
 EXTENSIONS = [
-  "flask_project_builder.ext.db:init_app",
-  "flask_project_builder.ext.migrate:init_app",
-  "flask_project_builder.ext.auth:init_app",
-  "flask_project_builder.ext.admin:init_app",
-  "flask_project_builder.ext.cli:init_app",
-  "flask_project_builder.ext.site:init_app",
-  "flask_project_builder.ext.hooks:init_app",
-] 
-FLASK_ADMIN_SWATCH = "slate" # choose another theme at https://bootswatch.com/
+  "flask_project_builder.site:init_app",
+]
 
 [development]
 DEBUG = true
-DEBUG_TB_INTERCEPT_REDIRECTS = false
-DEBUG_TB_PROFILER_ENABLED = true
-DEBUG_TB_TEMPLATE_EDITOR_ENABLED = true
-EXTENSIONS = [
-  "flask_project_builder.ext.db:init_app",
-  "flask_project_builder.ext.migrate:init_app",
-  "flask_project_builder.ext.auth:init_app",
-  "flask_project_builder.ext.admin:init_app",
-  "flask_project_builder.ext.cli:init_app", 
-  "flask_project_builder.ext.toolbar:init_app",
-  "flask_project_builder.ext.site:init_app",
-  "flask_project_builder.ext.hooks:init_app",
-]
-SQLALCHEMY_DATABASE_URI = "sqlite:///flask_project_builder.db"
-SQLALCHEMY_TRACK_MODIFICATIONS = false
-
-[production]
-SQLALCHEMY_DATABASE_URI = "mysql://...."
-SQLALCHEMY_TRACK_MODIFICATIONS = false

@@ -15,10 +15,11 @@
 </section>
 
 <section class="section">
+
     <div class="columns">
         <div class="column is-one-third">
             <article class="tile is-child notification is-light">
-                <form action="">
+                <form action="{{ url_for('site.index') }}" method="POST">
                     <div class="field">
                         <label class="label">Project Name</label>
                         <div class="control">
@@ -29,26 +30,39 @@
                     <div class="field">
                         <div class="control">
                             <label class="checkbox">
-                                <input type="checkbox" name="afp">
+                                <input type="checkbox" id="afp" name="afp" onclick="afpFunc()">
                                 Application Factory Pattern
                             </label>
                         </div>
                     </div>
 
-                    <div class="field">
+                    <div class="field" id="sqlal" style="display: none;">
                         <div class="control">
                             <label class="checkbox">
-                                <input type="checkbox" name="sqlal">
+                                <input type="checkbox" id="inp_sqlal" name="sqlal">
                                 SQLAlchemy
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="field" id="dyna" style="display: none;">
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="checkbox" id="inp_dyna" name="dyna">
+                                Dynaconf
                             </label>
                         </div>
                     </div>
 
                     <div class="field">
                         <div class="control">
-                            <label class="checkbox">
-                                <input type="checkbox" name="dyna">
-                                Dynaconf
+                            <label class="radio">
+                                <input type="radio" id="tar" name="tar" onclick="tarFunc()" checked>
+                                .tar.gz
+                            </label>
+                            <label class="radio">
+                                <input type="radio" id="zip" name="zip" onclick="zipFunc()">
+                                .zip
                             </label>
                         </div>
                     </div>
@@ -61,10 +75,19 @@
                     </div>
                 </form>
             </article>
-
-
-
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <br>
+            <div class="notification is-warning">
+                <button class="delete"></button>
+                {% for message in messages %}
+                {{ message }}<br>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
         </div>
+
         <div class="column">
             <header class="bd-header">
                 <div class="bd-header-titles">
@@ -74,7 +97,6 @@
                     <p class="subtitle is-4"></p>
                 </div>
             </header>
-
 
             <h2 class="subtitle">
                 fill in the form on the side and choose options:
@@ -181,11 +203,13 @@
 
 
         </div>
-        <!-- <div class="column">Auto</div> -->
+
     </div>
+
     <br><br>
     This python script was created by Cesar and Jady Godoi during [Curso de Desenvolvimento
     Web](http://skip.gg/curso-flask-codeshow) taught by Bruno Rocha.
+
 </section>
 
 <script type="text/javascript">
@@ -198,6 +222,33 @@
             });
         });
     });
+
+    function afpFunc() {
+        var afp = document.getElementById("afp");
+        var sqlal = document.getElementById("sqlal")
+        var dyna = document.getElementById("dyna")
+
+        if (afp.checked === false) {
+            sqlal.style.display = "none"
+            dyna.style.display = "none"
+            document.getElementById("inp_sqlal").checked = false
+            document.getElementById("inp_dyna").checked = false
+        } else {
+            sqlal.style.display = "block"
+            dyna.style.display = "block"
+        }
+    }
+
+    function tarFunc() {
+        document.getElementById("tar").checked = true;
+        document.getElementById("zip").checked = false;
+    }
+
+    function zipFunc() {
+        document.getElementById("zip").checked = true;
+        document.getElementById("tar").checked = false;
+    }
+
 </script>
 
 {% endblock content %}

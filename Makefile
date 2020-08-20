@@ -17,13 +17,6 @@ install:
 install-dev:
 	pip install -e .['dev']
 
-init-db:
-	FLASK_APP=flask_project_builder/app.py flask create-db
-	FLASK_APP=flask_project_builder/app.py flask db upgrade
-
-test:
-	FLASK_ENV=test pytest tests/ -v --cov=flask_project_builder
-
 format:
 	isort **/*.py
 	black -l 79 **/*.py

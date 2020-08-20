@@ -1,4 +1,11 @@
-from flask import Blueprint, render_template, request, redirect, flash
+from flask import (
+    Blueprint,
+    render_template,
+    request,
+    redirect,
+    flash,
+    send_file,
+)
 from flask.helpers import url_for
 
 from .project_builder import ProjectBuilder
@@ -24,7 +31,21 @@ def index():
         flash(f" - Creating the directories ...")
         new_project.files()
         flash(f" - Writing the files ...")
-        new_project.make_tarfile()
-        flash(f" - Creating the .tar.gz file ...")
+
+        if request.form.get("zip"):
+            new_project.make_zipfile()
+            flash(f" - Creating the .zip file ...")
+            file_name = f"../{project['proj']}.zip"
+        else:
+            new_project.make_tarfile()
+            flash(f" - Creating the .tar.gz file ...")
+            file_name = f"../{project['proj']}.tar.gz"
+
+        return redirect(url_for("site.download_file", ziped_file=file_name))
 
     return render_template("index.html")
+
+
+@bp.route("/download/<string:ziped_file>")
+def download_file(ziped_file):
+    return send_file(ziped_file)
