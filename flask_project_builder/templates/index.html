@@ -70,7 +70,7 @@
 
                     <div class="field is-grouped">
                         <div class="control">
-                            <button class="button is-link">Create</button>
+                            <button class="button is-link">Get your Project!</button>
                         </div>
                     </div>
                 </form>
@@ -89,126 +89,167 @@
         </div>
 
         <div class="column">
-            <header class="bd-header">
-                <div class="bd-header-titles">
-                    <h1 class="title">
-                        HOW TO USE
-                    </h1>
-                    <p class="subtitle is-4"></p>
-                </div>
-            </header>
 
-            <h2 class="subtitle">
-                fill in the form on the side and choose options:
-            </h2>
-            <br>
-            <h2 class="subtitle">
-                Project Name
-            </h2>
-            <h3>
-                Do not use spaces in your project name. Prefer underscores instead spaces.
-            </h3>
-            <br>
-            <h2 class="subtitle">
-                Application Factory Pattern
-            </h2>
-            <h3>
-                Indicates that you want to create a new Flask project on Application Factory Pattern. <br>
-                As your Flask application grows, you'll often find the need to register blueprints, dynamically load
-                configuration, add request handlers etc.. <br>
-                The application factory is a function that wraps the creating of the app object and returns it.
-            </h3>
-            <br>
-            <h2 class="subtitle">
-                SQLAlchemy
-            </h2>
-            <h3>
-                Indicates that you want to install [Flask
-                SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/2.x/) in your project.
-            </h3>
-            <br>
-            <h2 class="subtitle">
-                Dynaconf
-            </h2>
-            <h3>
-                Indicates that you want to install [Dynaconf](https://dynaconf.readthedocs.io/en/docs_223/) in your
-                project.
-            </h3>
+            <div class="bd-header-titles">
+                <h2 class="title">GET YOUR FLASK BOILERPLATE</h2>
+                <hr>
+                <p class="subtitle is-4">
+                    Fill out the form and get your code!
+                </p>
+            </div>
 
             <br>
-            <header class="bd-header">
-                <div class="bd-header-titles">
-                    <h1 class="title">
-                        WHAT TO DO BEFORE START
-                    </h1>
-                    <p class="subtitle is-4"></p>
-                </div>
-            </header>
 
             <ul>
-                <li> If you chose the Application Factory Pattern, don't forget to update the FLASK_APP environment
-                    variable:</li>
-                <blockquote><code>$ export FLASK_APP=project_name/app.py</code></blockquote>
+                <li>
+                    <p><strong>Project Name</strong><br>
+                        Do not use spaces in your project name. Prefer underscores instead spaces.</p>
+                </li>
+                <li>
+                    <p><strong>Application Factory Pattern</strong><br>
+                        Indicates that you want to create a new Flask project on <a
+                            href="https://flask.palletsprojects.com/en/1.1.x/patterns/appfactories/">Application Factory
+                            Pattern</a>. The application factory is an architectural model for applications</p>
+                </li>
+                <li>
+                    <p><strong>SQLAlchemy</strong><br>
+                        Indicates that you want to install <a
+                            href="https://flask-sqlalchemy.palletsprojects.com/en/2.x/">Flask
+                            SQLAlchemy</a> in your project.</p>
+                </li>
+                <li>
+                    <p><strong>Dynaconf</strong><br>
+                        Indicates that you want to install <a
+                            href="https://dynaconf.readthedocs.io/en/docs_223/">Dynaconf</a>
+                        in your project.</p>
+                </li>
+                <li>
+                    <p><strong>.tar.gz / .zip</strong><br>
+                        Choose the file format to download</p>
+                </li>
             </ul>
-            <br>
-            <ul>
-                <li>If you want to run flask in development mode, update the FLASK_ENV environment variable:</li>
-                <blockquote><code>$ export FLASK_ENV=development</code></blockquote>
-            </ul>
-            <br>
-            <ul>
-                <li>if you are using the Application Factory Pattern and want to use the `flask-toolbar`, run the
-                    command:</li>
-                <blockquote><code>$ pip install flask-toolbar</code></blockquote>
-                and uncomment the line:
-                <li># toolbar.init_app(app) at app.py file or</li>
-                <li># project_name.ext.toolbar:init_app in settings.toml (when you are using Dynaconf)</li>
-            </ul>
-            <br>
-            In the Makefile file, we have some useful commands, which we use with the make command, such as:
-            <br>
             <br>
 
+            <div class="bd-header-titles">
+                <h2 class="title">AFTER GETTING YOUR FILE</h2>
+            </div>
+            <br>
 
-            <table style="width:90%" class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-                <tr>
-                    <th>Command</th>
-                    <th>What he does</th>
-                </tr>
-                <tr>
-                    <td>make clean</td>
-                    <td>clears the project folder</td>
-                </tr>
-                <tr>
-                    <td>make install</td>
-                    <td>install our project as a package python</td>
-                </tr>
-                <tr>
-                    <td>make install-dev</td>
-                    <td>similar to install, but with requirements-dev.txt</td>
-                </tr>
-                <tr>
-                    <td>make test</td>
-                    <td>run tests</td>
-                </tr>
-                <tr>
-                    <td>make init-db</td>
-                    <td>starts and updates the db (if you choose SQLAlchemy)</td>
-                </tr>
-                <tr>
-                    <td>make format</td>
-                    <td>formats the files (needs: isort and black)</td>
-                </tr>
+            <ol>
+                <li>Unzip the file you downloaded:
+                    <pre><code class="language-sh"><div>$ tar -vzxf project_name.tar.gz  <span class="hljs-comment"># if you chose .tar.gz</span>
+$ unzip project_name.zip         <span class="hljs-comment"># if you chose .zip</span>
+</div></code></pre>
+                </li>
+                <li>Enter the project_name directory:
+                    <pre><code class="language-sh"><div>$ <span class="hljs-built_in">cd</span> project_name
+</div></code></pre>
+                </li>
+                <li>Create and update your virtual environment:
+                    <pre><code class="language-sh"><div>$ python3 -m venv .venv
+$ <span class="hljs-built_in">source</span> .venv/bin/activate
+$ pip install --upgrade pip
+</div></code></pre>
+                </li>
+                <li>Run make install (or make install-dev):
+                    <pre><code class="language-sh"><div>$ make install
+</div></code></pre>
+                    <em>ps. <code>make install-dev</code> will install some development tools for you</em></li>
+            </ol>
+            <br>
+
+            <div class="bd-header-titles">
+                <h2 class="title">IMPORTANT</h2>
+            </div>
+            <br>
+
+            <h2 id="important">IMPORTANT</h2>
+            <p>If you chose the Application Factory Pattern, don't forget to update the FLASK_APP environment variable:
+            </p>
+            <pre><code class="language-sh"><div>$ <span class="hljs-built_in">export</span> FLASK_APP=project_name/app.py
+</div></code></pre>
+            <p>If you want to run flask in development mode, update the FLASK_ENV environment variable:</p>
+            <pre><code class="language-sh"><div>$ <span class="hljs-built_in">export</span> FLASK_ENV=development
+</div></code></pre>
+            <p>If you are using the Application Factory Pattern and want to use the <code>flask-toolbar</code>, run the
+                command:
+            </p>
+            <blockquote>
+                <pre><code class="language-sh"><div>$ pip install flask-toolbar
+</div></code></pre>
+                <p>and uncomment the following line in <a href="http://app.py">app.py</a></p>
+                <pre><code class="language-toml"><div><span class="hljs-comment"># toolbar.init_app(app)</span>
+</div></code></pre>
+                <p>if you are using Dynaconf, uncomment the following line:</p>
+                <pre><code class="language-toml"><div><span class="hljs-comment"># "project_name.ext.toolbar:init_app" </span>
+</div></code></pre>
+            </blockquote>
+            <hr>
+            <p>In the Makefile file, we have some useful commands, which we use with the make command, such as:</p>
+            <br>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>What he does</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>make clean</code></td>
+                        <td>clears the project folder</td>
+                    </tr>
+                    <tr>
+                        <td><code>make install</code></td>
+                        <td>install our project as a package python</td>
+                    </tr>
+                    <tr>
+                        <td><code>make install-dev</code></td>
+                        <td>similar to install, but with requirements-dev.txt</td>
+                    </tr>
+                    <tr>
+                        <td><code>make test</code></td>
+                        <td>run tests</td>
+                    </tr>
+                    <tr>
+                        <td><code>make init-db</code></td>
+                        <td>starts and updates the db (if you choose SQLAlchemy)</td>
+                    </tr>
+                    <tr>
+                        <td><code>make format</code></td>
+                        <td>formats the files (needs: isort and black)</td>
+                    </tr>
+                </tbody>
             </table>
 
-
         </div>
+        <!--fim-->
 
     </div>
 
-    <br><br>
-    This python script was created by Cesar and Jady Godoi during [Curso de Desenvolvimento
-    Web](http://skip.gg/curso-flask-codeshow) taught by Bruno Rocha.
+    <br>
+    <div class="box">
+        <article class="media">
+            <div class="media-content has-text-centered">
+                <div class="content">
+                    <h4>
+                        <em>
+                            This python project was created by <strong>Cesar Godoi</strong> and <strong>Jady
+                                Godoi</strong>
+                            during <a href="http://skip.gg/curso-flask-codeshow">Curso de Desenvolvimento Web</a> taught
+                            by
+                            <strong>Bruno
+                                Rocha</strong>.
+                        </em>
+                    </h4>
+                    <p class=""><em>August 2020</em></p>
+                </div>
+            </div>
+        </article>
+    </div>
+
+
+
 
 </section>
 

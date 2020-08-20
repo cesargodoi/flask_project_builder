@@ -12,7 +12,6 @@ from flask.helpers import url_for
 
 from .project_builder import ProjectBuilder
 
-
 bp = Blueprint("site", __name__)
 
 
