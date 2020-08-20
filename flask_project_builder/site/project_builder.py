@@ -24,6 +24,7 @@ class ProjectBuilder:
         self.templates = os.path.join(
             os.path.dirname(os.path.abspath(__file__)), "templates"
         )
+        os.chdir("flask_project_builder/temp")
 
     def render_template(self, path):
         if "/" in path:
