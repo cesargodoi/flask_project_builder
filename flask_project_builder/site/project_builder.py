@@ -21,10 +21,13 @@ class ProjectBuilder:
             "dyna": dyna,
             "secret": str(secret) if dyna else "",
         }
+        self.temp = os.path.join(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "temp"
+        )
         self.templates = os.path.join(
             os.path.dirname(os.path.abspath(__file__)), "templates"
         )
-        os.chdir("flask_project_builder/temp")
+        os.chdir(self.temp)
 
     def render_template(self, path):
         if "/" in path:
@@ -130,9 +133,11 @@ class ProjectBuilder:
                 self.render_template(f"{self.proj}/ext/auth/admin.py")
 
     def make_tarfile(self):
-        with TarFile.open(f"{self.proj}.tar.gz", "w:gz") as tar_file:
+        with TarFile.open(
+            f"{self.temp}/{self.proj}.tar.gz", "w:gz"
+        ) as tar_file:
             tar_file.add(self.proj)
-        os.system(f"rm -rf {self.proj}")
+        os.system(f"rm -rf {self.temp}/{self.proj}")
 
     def make_zipfile(self):
         file_paths = []
@@ -140,7 +145,7 @@ class ProjectBuilder:
             for filename in files:
                 file_path = os.path.join(root, filename)
                 file_paths.append(file_path)
-        with ZipFile(f"{self.proj}.zip", "w") as zip_file:
+        with ZipFile(f"{self.temp}/{self.proj}.zip", "w") as zip_file:
             for file_ in file_paths:
                 zip_file.write(file_)
-        os.system(f"rm -rf {self.proj}")
+        os.system(f"rm -rf {self.temp}/{self.proj}")
