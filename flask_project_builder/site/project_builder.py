@@ -133,19 +133,19 @@ class ProjectBuilder:
                 self.render_template(f"{self.proj}/ext/auth/admin.py")
 
     def make_tarfile(self):
-        with TarFile.open(
-            f"{self.temp}/{self.proj}.tar.gz", "w:gz"
-        ) as tar_file:
+        os.chdir(self.temp)
+        with TarFile.open(f"{self.proj}.tar.gz", "w:gz") as tar_file:
             tar_file.add(self.proj)
-        os.system(f"rm -rf {self.temp}/{self.proj}")
+        os.system(f"rm -rf {self.proj}")
 
     def make_zipfile(self):
+        os.chdir(self.temp)
         file_paths = []
         for root, directories, files in os.walk(self.proj):
             for filename in files:
                 file_path = os.path.join(root, filename)
                 file_paths.append(file_path)
-        with ZipFile(f"{self.temp}/{self.proj}.zip", "w") as zip_file:
+        with ZipFile(f"{self.proj}.zip", "w") as zip_file:
             for file_ in file_paths:
                 zip_file.write(file_)
-        os.system(f"rm -rf {self.temp}/{self.proj}")
+        os.system(f"rm -rf {self.proj}")
