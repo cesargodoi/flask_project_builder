@@ -33,17 +33,17 @@ def index():
         new_project.files()
         if request.form.get("zip"):
             new_project.make_zipfile()
-            file_name = f"{project['proj']}.zip"
+            zip_file = f"{project['proj']}.zip"
         else:
             new_project.make_tarfile()
-            file_name = f"{project['proj']}.tar.gz"
+            zip_file = f"{project['proj']}.tar.gz"
 
-        return redirect(url_for("site.download_file", ziped_file=file_name))
+        return redirect(url_for("site.download_file", zip_file=zip_file))
 
     return render_template("index.html")
 
 
-@bp.route("/download/<string:ziped_file>")
-def download_file(ziped_file):
-    to_send = join(dirname(dirname(abspath(__file__))), f"temp/{ziped_file}",)
+@bp.route("/download/<string:zip_file>")
+def download_file(zip_file):
+    to_send = join(dirname(dirname(abspath(__file__))), f"temp/{zip_file}",)
     return send_file(to_send, as_attachment=True)

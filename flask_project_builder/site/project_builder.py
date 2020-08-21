@@ -1,7 +1,6 @@
 import os
 
 from tarfile import TarFile
-from os.path import basename
 from zipfile import ZipFile
 from base64 import b16encode
 from jinja2 import Environment, FileSystemLoader
