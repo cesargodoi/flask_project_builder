@@ -10,7 +10,7 @@ from flask import (
 )
 from flask.helpers import url_for
 
-from .project_builder import ProjectBuilder
+from start_flask.project_builder import ProjectBuilder
 
 bp = Blueprint("site", __name__)
 
@@ -27,6 +27,9 @@ def index():
         project["afp"] = True if request.form.get("afp") else False
         project["sqlal"] = True if request.form.get("sqlal") else False
         project["dyna"] = True if request.form.get("dyna") else False
+        project["dir_to_render"] = join(
+            dirname(dirname(abspath(__file__))), "temp/"
+        )
 
         new_project = ProjectBuilder(**project)
         new_project.directories()
@@ -47,3 +50,4 @@ def index():
 def download_file(zip_file):
     to_send = join(dirname(dirname(abspath(__file__))), f"temp/{zip_file}",)
     return send_file(to_send, as_attachment=True)
+    
